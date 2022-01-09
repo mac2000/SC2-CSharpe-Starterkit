@@ -17,7 +17,7 @@ namespace Bot {
             // Disable PING control frames (https://tools.ietf.org/html/rfc6455#section-5.5.2).
             // It seems SC2 built in websocket server does not do PONG but tries to process ping as
             // request and then sends empty response to client. 
-            clientSocket.Options.KeepAliveInterval = TimeSpan.FromDays(30);
+            clientSocket.Options.KeepAliveInterval = TimeSpan.Zero;
             var adr = string.Format("ws://{0}:{1}/sc2api", address, port);
             var uri = new Uri(adr);
             using(CancellationTokenSource cancellationSource = new CancellationTokenSource()) {
